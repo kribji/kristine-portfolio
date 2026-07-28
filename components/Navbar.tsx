@@ -36,17 +36,13 @@ export default function Navbar() {
         scrolled ? "bg-white border-b border-border" : "bg-transparent border-b border-transparent"
       }`}
     >
-      <nav className="mx-auto flex w-full items-center justify-between px-6 py-5 md:px-10">
-        <p className="small-caps text-muted hidden md:block">
-          Frontend Developer, AI Builder & Concept Designer
-        </p>
-
+      <nav className="mx-auto flex w-full items-center justify-end px-6 py-5 md:px-10">
         <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="font-sans text-[14px] font-normal text-foreground transition-opacity hover:opacity-60"
+                className="small-caps text-muted transition-opacity hover:opacity-60"
               >
                 {link.label}
               </a>
@@ -54,7 +50,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="ml-auto flex items-center md:hidden">
+        <div className="flex items-center md:hidden">
           <button
             type="button"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -89,7 +85,7 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="block py-3 font-sans text-[14px] font-normal text-foreground"
+                  className="small-caps block py-3 text-muted"
                 >
                   {link.label}
                 </a>

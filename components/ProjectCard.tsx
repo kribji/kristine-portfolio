@@ -67,9 +67,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   const textBlock = (
     <div className="flex w-full flex-col justify-center md:w-[40%]">
       <p className="small-caps text-muted">{project.category}</p>
-      <h4 className="mt-3 font-sans text-[24px] font-semibold text-foreground">
-        {project.name}
-      </h4>
       <p className="mt-4 font-sans text-[16px] font-normal leading-relaxed text-muted">
         {project.tagline}
       </p>
@@ -77,7 +74,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         href={`/projects/${project.slug}`}
         className="mt-6 inline-block font-sans text-[14px] text-foreground transition-opacity hover:opacity-60"
       >
-        View project →
+        View
       </Link>
     </div>
   );
@@ -85,8 +82,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <article
       ref={ref}
-      className={`animate-fade-in border-b border-border py-24 transition-all duration-[600ms] ease-[ease] ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-[30px] opacity-0"
+      className={`animate-fade-in border-b border-border py-24 transition-all duration-[700ms] ease-[ease] ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-[40px] opacity-0"
       }`}
     >
       <div

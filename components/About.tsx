@@ -14,7 +14,7 @@ const stack = [
 export default function About() {
   return (
     <section id="about" className="border-b border-border px-6 py-24 md:px-10">
-      <div className="mx-auto grid w-full grid-cols-1 gap-16 md:grid-cols-2 md:gap-24">
+      <div className="mx-auto grid w-full max-w-[1000px] grid-cols-1 gap-16 md:grid-cols-2 md:gap-24">
         <div>
           <p className="small-caps text-muted">About</p>
           <div className="mt-6 space-y-5 font-sans text-[16px] font-normal leading-[1.8] text-foreground">
