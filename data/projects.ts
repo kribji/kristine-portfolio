@@ -64,30 +64,23 @@ export const projects: Project[] = [
     url: "https://eveveliinastudio.com",
   },
   {
-    slug: "hireos",
-    name: "HireOS",
-    category: "AI SAAS · PRODUCT",
-    tagline:
-      "A two-sided job matching platform that scrapes open positions across the web and matches them to candidates based on actual competence. Built with an inbuilt CV builder and AI powered interview trainer.",
-    description:
-      "HireOS is built around three core problems: job seekers waste time applying to irrelevant positions, employers wade through unqualified applicants, and most people do not know how to present themselves or prepare for interviews. The platform scrapes open positions across the web and runs them through an AI matching layer that goes beyond keywords to understand actual competence fit. Job seekers get a tailored position feed, a structured CV builder, and an AI powered interview trainer. Employers get candidates ranked by genuine relevance. Built with Next.js 14, Supabase, Tailwind, and the Anthropic Claude API. Currently in active development.",
-    image: "/images/hireos.jpg",
-    tech: ["Next.js 14", "Supabase", "Claude API", "Tailwind"],
-    role: "Solo founder, full-stack developer",
-    url: "#",
-  },
-  {
     slug: "holidaze",
     name: "Holidaze",
-    category: "WEB APP · ACADEMIC",
+    category: "PROJECT · 2024",
     tagline:
-      "A conceptual travel booking platform that rejects persuasive UX in favour of calm, clarity, and respect for the user — with a 3D interactive globe as the primary navigation surface.",
+      "A conceptual travel platform exploring how digital services can evolve alongside digitally mature users.",
     description:
-      "Most travel platforms are designed to pressure you into booking. Holidaze asks what happens when you design the opposite — a platform that treats users as informed adults rather than conversion targets. The interface strips away urgency cues, funnel-based CTAs, and manipulative hierarchy in favour of flat information structures, ambient motion, and genuine clarity. The centrepiece is a slowly rotating 3D globe built with Three.js and react-globe.gl, letting users explore destinations spatially rather than through menus. Venue data is fetched, filtered, and rendered through a modular component system supporting country-based discovery, search, and attribute filtering. Some conventional optimisations were deliberately softened to preserve design intent, validated through Lighthouse audits and real user testing.",
-    image: "/images/holidaze.jpg",
-    tech: ["React", "Tailwind", "REST API"],
-    role: "Frontend developer",
-    url: "https://github.com/Kristinebjorgan/holidaze",
+      "CONTEXT\nHolidaze was developed as both a booking platform concept and a critical exploration of contemporary web design. The project emerged from the hypothesis that the future web should empower users rather than persuade them, favoring clarity and trust over conversion-driven patterns.\n\nDESIGN PHILOSOPHY\nRooted in Web3 design principles, the interface avoids traditional visual hierarchies, urgency cues, and funnel-based CTAs. Instead, it introduces flat information structures, minimal contrast, and ambient motion to create a calm, non-directive browsing experience.\n\nINTERACTION & MOTION\nA slowly rotating 3D globe functions as the primary navigation surface, allowing users to explore destinations spatially rather than through menus. Subtle motion, scroll-based scaling, and hover interactions add liveliness without breaking the minimalist intent.\n\nSYSTEM ARCHITECTURE\nThe platform is structured around modular, purpose-driven components. Venue data is fetched, filtered, and rendered through a scalable system supporting country-based discovery, search, and attribute filtering, with a clear separation between logic and presentation.\n\nINTENTIONAL TRADE-OFFS\nSome conventional accessibility and performance optimizations were deliberately softened to preserve design intent. These decisions were validated through Lighthouse audits, WCAG checks, and real user testing, confirming usability despite lower visual hierarchy.\n\nOUTCOME\nHolidaze demonstrates that digital experiences do not need to rely on urgency or persuasion to be effective. The project delivers a calm, trust-based interface that encourages intentional action, offering a vision for a more mature and respectful web.",
+    image: "/images/holidaze1.png",
+    tech: ["React", "Tailwind CSS", "Three.js", "react-globe.gl", "REST APIs", "Netlify"],
+    role: [
+      "Concept & Research",
+      "UX & UI Design",
+      "Frontend Architecture",
+      "Interaction Design",
+      "Testing & QA",
+    ],
+    url: "https://holid4ze.netlify.app/",
   },
 ];
 

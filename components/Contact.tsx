@@ -1,12 +1,18 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const el = ref.current;
@@ -99,98 +105,102 @@ export default function Contact() {
         </button>
       </div>
 
-      {open && (
-        <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 px-6"
-          onClick={closeModal}
-          role="presentation"
-        >
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="contact-modal-title"
-            className="relative w-full max-w-[480px] bg-white p-8"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              aria-label="Close"
+      {open &&
+        mounted &&
+        createPortal(
+          <>
+            <div
+              className="fixed inset-0 z-[100]"
+              style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
               onClick={closeModal}
-              className="absolute right-4 top-4 font-sans text-[20px] leading-none text-muted transition-opacity hover:opacity-60"
+              role="presentation"
+            />
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="contact-modal-title"
+              className="fixed left-1/2 top-1/2 z-[101] w-[90%] max-w-[560px] -translate-x-1/2 -translate-y-1/2 bg-white p-10"
             >
-              ×
-            </button>
-
-            <h3
-              id="contact-modal-title"
-              className="pr-8 font-display text-[28px] text-foreground"
-            >
-              Get in touch
-            </h3>
-
-            {submitted ? (
-              <p className="mt-8 font-sans text-[16px] text-foreground">
-                Message sent. I&apos;ll be in touch soon.
-              </p>
-            ) : (
-              <form
-                action="https://formspree.io/f/mbdnwrdy"
-                method="POST"
-                onSubmit={handleSubmit}
-                className="mt-8 space-y-4 text-left"
+              <button
+                type="button"
+                aria-label="Close"
+                onClick={closeModal}
+                className="absolute right-4 top-4 font-sans text-[20px] leading-none text-muted transition-opacity hover:opacity-60"
               >
-                <div>
-                  <label htmlFor="name" className="sr-only">
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    placeholder="Name"
-                    className="w-full border border-border bg-white px-4 py-3 font-sans text-[15px] text-foreground outline-none placeholder:text-muted focus:border-foreground"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="sr-only">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    placeholder="Email"
-                    className="w-full border border-border bg-white px-4 py-3 font-sans text-[15px] text-foreground outline-none placeholder:text-muted focus:border-foreground"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="sr-only">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={6}
-                    placeholder="Message"
-                    className="w-full resize-y border border-border bg-white px-4 py-3 font-sans text-[15px] text-foreground outline-none placeholder:text-muted focus:border-foreground"
-                  />
-                </div>
-                <div className="flex justify-center">
-                  <button
-                    type="submit"
-                    className="bg-foreground px-8 py-3 font-sans text-[15px] text-white transition-colors hover:bg-[#333]"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
+                ×
+              </button>
+
+              <h3
+                id="contact-modal-title"
+                className="pr-8 font-display text-[28px] text-foreground"
+              >
+                Get in touch
+              </h3>
+
+              {submitted ? (
+                <p className="mt-8 font-sans text-[16px] text-foreground">
+                  Message sent. I&apos;ll be in touch soon.
+                </p>
+              ) : (
+                <form
+                  action="https://formspree.io/f/mbdnwrdy"
+                  method="POST"
+                  onSubmit={handleSubmit}
+                  className="mt-8 space-y-4 text-left"
+                >
+                  <div>
+                    <label htmlFor="name" className="sr-only">
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      placeholder="Name"
+                      className="w-full border border-border bg-white px-4 py-3 font-sans text-[15px] text-foreground outline-none placeholder:text-muted focus:border-foreground"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="sr-only">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="Email"
+                      className="w-full border border-border bg-white px-4 py-3 font-sans text-[15px] text-foreground outline-none placeholder:text-muted focus:border-foreground"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="sr-only">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={6}
+                      placeholder="Message"
+                      className="w-full resize-y border border-border bg-white px-4 py-3 font-sans text-[15px] text-foreground outline-none placeholder:text-muted focus:border-foreground"
+                    />
+                  </div>
+                  <div className="flex justify-center">
+                    <button
+                      type="submit"
+                      className="bg-foreground px-8 py-3 font-sans text-[15px] text-white transition-colors hover:bg-[#333]"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
+          </>,
+          document.body
+        )}
     </section>
   );
 }

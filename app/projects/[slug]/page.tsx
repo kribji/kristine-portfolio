@@ -20,6 +20,11 @@ const projectSectionImages: Record<string, Record<string, string>> = {
     "DESIGN APPROACH": "/images/eveliina2.png",
     OUTCOME: "/images/eveliina3.png",
   },
+  holidaze: {
+    CONTEXT: "/images/holidaze1.png",
+    "INTERACTION & MOTION": "/images/holidaze2.png",
+    OUTCOME: "/images/holidaze3.png",
+  },
 };
 
 export function generateStaticParams() {
@@ -112,18 +117,30 @@ export default function ProjectPage({ params }: Props) {
             </ul>
           </section>
 
-          {project.url && project.url !== "#" && (
-            <section>
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="small-caps text-foreground transition-opacity hover:opacity-60"
-              >
-                Visit
-              </a>
+          {(project.url && project.url !== "#") || project.slug === "holidaze" ? (
+            <section className="flex items-center gap-8">
+              {project.url && project.url !== "#" && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="small-caps text-foreground transition-opacity hover:opacity-60"
+                >
+                  Visit
+                </a>
+              )}
+              {project.slug === "holidaze" && (
+                <a
+                  href="https://github.com/Kristinebjorgan/holidaze"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="small-caps text-foreground transition-opacity hover:opacity-60"
+                >
+                  Github
+                </a>
+              )}
             </section>
-          )}
+          ) : null}
         </div>
       </main>
       <Footer />
