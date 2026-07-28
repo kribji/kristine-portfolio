@@ -32,9 +32,9 @@ export default function ProjectPage({ params }: Props) {
       <main className="mx-auto max-w-[800px] px-6 pb-24 pt-28 md:px-10 md:pt-32">
         <Link
           href="/#work"
-          className="font-sans text-[14px] text-foreground transition-opacity hover:opacity-60"
+          className="small-caps text-foreground transition-opacity hover:opacity-60"
         >
-          ← Back
+          Back
         </Link>
 
         <h1 className="mt-10 font-display text-[48px] leading-none text-foreground md:text-[64px]">
@@ -80,9 +80,9 @@ export default function ProjectPage({ params }: Props) {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-sans text-[14px] text-foreground transition-opacity hover:opacity-60"
+                className="small-caps text-foreground transition-opacity hover:opacity-60"
               >
-                Visit project →
+                Visit
               </a>
             </section>
           )}

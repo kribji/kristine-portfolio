@@ -42,8 +42,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     return () => observer.disconnect();
   }, []);
 
-  const imageBlock = (
-    <div className="group relative aspect-[4/3] w-full overflow-hidden md:w-[55%]">
+  const imageContent = (
+    <>
       {!imgError ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -61,8 +61,24 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <h3 className="absolute bottom-4 left-4 font-display text-[36px] leading-none text-white md:bottom-6 md:left-6">
         {project.name}
       </h3>
-    </div>
+    </>
   );
+
+  const imageBlock =
+    project.url && project.url !== "#" ? (
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative block aspect-[4/3] w-full overflow-hidden md:w-[55%]"
+      >
+        {imageContent}
+      </a>
+    ) : (
+      <div className="group relative aspect-[4/3] w-full overflow-hidden md:w-[55%]">
+        {imageContent}
+      </div>
+    );
 
   const textBlock = (
     <div className="flex w-full flex-col justify-center md:w-[40%]">
@@ -72,7 +88,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       </p>
       <Link
         href={`/projects/${project.slug}`}
-        className="mt-6 inline-block font-sans text-[14px] text-foreground transition-opacity hover:opacity-60"
+        className="small-caps mt-6 inline-block text-foreground transition-opacity hover:opacity-60"
       >
         View
       </Link>
