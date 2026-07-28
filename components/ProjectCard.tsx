@@ -19,15 +19,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     const el = ref.current;
     if (!el) return;
 
-    const prefersReduced =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (prefersReduced) {
-      setVisible(true);
-      return;
-    }
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -35,7 +26,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           observer.unobserve(entry.target);
         }
       },
-      { rootMargin: "0px 0px 80px 0px", threshold: 0 }
+      { threshold: 0.1, rootMargin: "-50px" }
     );
 
     observer.observe(el);
@@ -98,9 +89,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <article
       ref={ref}
-      className={`animate-fade-in border-b border-border py-24 transition-all duration-[800ms] ease-out ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-[60px] opacity-0"
-      }`}
+      className={`border-b border-border py-24 ${visible ? "animate-visible" : "animate-hidden"}`}
     >
       <div
         className={`mx-auto flex w-full flex-col gap-10 px-6 md:flex-row md:items-center md:justify-between md:gap-[5%] md:px-10 ${

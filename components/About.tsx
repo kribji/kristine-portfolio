@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 const stack = [
   "Next.js",
   "React",
@@ -12,8 +16,33 @@ const stack = [
 ];
 
 export default function About() {
+  const ref = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1, rootMargin: "-50px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="about" className="border-b border-border px-6 py-24 md:px-10">
+    <section
+      ref={ref}
+      id="about"
+      className={`border-b border-border px-6 py-24 md:px-10 ${visible ? "animate-visible" : "animate-hidden"}`}
+    >
       <div className="mx-auto grid w-full max-w-[900px] grid-cols-1 gap-16 md:grid-cols-2 md:gap-24">
         <div>
           <p className="small-caps text-muted">About</p>

@@ -27,14 +27,28 @@ body {
   }
 }
 
+.animate-hidden {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  .animate-fade-in {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+  .animate-hidden {
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-visible {
+    transition: none;
   }
 }

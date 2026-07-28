@@ -1,10 +1,30 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 export default function Contact() {
+  const ref = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1, rootMargin: "-50px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (open) {
@@ -50,7 +70,11 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="px-6 py-24 md:px-10">
+    <section
+      ref={ref}
+      id="contact"
+      className={`px-6 py-24 md:px-10 ${visible ? "animate-visible" : "animate-hidden"}`}
+    >
       <div className="mx-auto max-w-[560px] text-center">
         <p className="small-caps text-muted">Contact</p>
         <h2 className="mt-6 font-display text-[42px] leading-tight text-foreground md:text-[56px]">
