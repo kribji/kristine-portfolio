@@ -33,7 +33,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
-        scrolled ? "bg-white border-b border-border" : "bg-transparent border-b border-transparent"
+        scrolled ? "bg-white" : "bg-transparent"
       }`}
     >
       <nav className="mx-auto flex w-full items-center justify-end px-6 py-5 md:px-10">

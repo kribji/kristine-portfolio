@@ -154,12 +154,14 @@ export default function Contact() {
                     className="w-full resize-y border border-border bg-white px-4 py-3 font-sans text-[15px] text-foreground outline-none placeholder:text-muted focus:border-foreground"
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="bg-foreground px-8 py-3 font-sans text-[15px] text-white transition-colors hover:bg-[#333]"
-                >
-                  Submit
-                </button>
+                <div className="flex justify-center">
+                  <button
+                    type="submit"
+                    className="bg-foreground px-8 py-3 font-sans text-[15px] text-white transition-colors hover:bg-[#333]"
+                  >
+                    Submit
+                  </button>
+                </div>
               </form>
             )}
           </div>

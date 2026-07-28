@@ -35,7 +35,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.15 }
+      { rootMargin: "0px 0px 80px 0px", threshold: 0 }
     );
 
     observer.observe(el);
@@ -43,13 +43,13 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   }, []);
 
   const imageBlock = (
-    <div className="relative w-full overflow-hidden aspect-[4/3] md:w-[55%]">
+    <div className="group relative aspect-[4/3] w-full overflow-hidden md:w-[55%]">
       {!imgError ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={project.image}
           alt={project.name}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover transition-transform duration-[400ms] ease-in-out group-hover:scale-105"
           onError={() => setImgError(true)}
         />
       ) : (
@@ -82,8 +82,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <article
       ref={ref}
-      className={`animate-fade-in border-b border-border py-24 transition-all duration-[700ms] ease-[ease] ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-[40px] opacity-0"
+      className={`animate-fade-in border-b border-border py-24 transition-all duration-[800ms] ease-out ${
+        visible ? "translate-y-0 opacity-100" : "translate-y-[60px] opacity-0"
       }`}
     >
       <div
