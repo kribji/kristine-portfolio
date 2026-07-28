@@ -6,7 +6,7 @@ export type Project = {
   description: string;
   image: string;
   tech: string[];
-  role: string;
+  role: string | string[];
   url: string;
 };
 
@@ -36,20 +36,32 @@ export const projects: Project[] = [
       "Vercel",
     ],
     role: "Solo founder, full-stack developer",
-    url: "https://app.leados.tech",
+    url: "https://www.leados.tech/",
   },
   {
     slug: "eveliina",
     name: "Eveliina",
-    category: "WEBSHOP · PRO BONO",
-    tagline:
-      "A fully custom headless ecommerce and portfolio platform for a Finnish ceramics artist, built with Next.js and the Shopify Storefront API.",
+    category: "PROJECT · 2026",
+    tagline: "Headless ceramics ecommerce & digital presence",
     description:
-      "Eveliina had no existing website and a clear vision: a calm, refined digital space that lets the ceramics lead without the noise of conventional ecommerce. Every design decision was made collaboratively — mockups were drawn up and iterated on together, then built from scratch. The result is a fully decoupled headless storefront using Shopify's Storefront API as the commerce backend and Next.js App Router on the frontend. Custom API routes handle all Shopify communication while page components stay focused purely on presentation. Large-format imagery, restrained typography, and generous whitespace give the work room to breathe. The structure supports future product growth and content expansion without touching the architecture.",
-    image: "/images/eveliina.jpg",
-    tech: ["Next.js", "Tailwind", "Shopify"],
-    role: "Frontend developer",
-    url: "https://eveveliinastudio.com",
+      "CONTEXT\nThe project began without an existing website. The goal was to create a calm, refined digital space that reflects the artist's aesthetic while enabling direct product sales without relying on Shopify's default storefront themes.\n\nTECHNICAL ARCHITECTURE\nBuilt using Next.js App Router with dynamic routing for collections and product detail pages. Shopify is used as the inventory and commerce backend via the Storefront API, while the frontend remains fully custom and decoupled.\n\nDATA & UI SEPARATION\nImplemented a clear separation between API routes and UI components. Custom API endpoints handle communication with Shopify, while page components focus purely on presentation. This structure improves scalability, maintainability, and future CMS integration.\n\nTECHNICAL HIGHLIGHTS\nDynamic API routes for collections and products. Headless Shopify Storefront API integration. Clean URL structure: /shop/[collection]/[product]. Normalized product data layer for UI consistency. Production deployment via Netlify with environment-based configuration. Scalable structure prepared for CMS-driven content.\n\nDESIGN APPROACH\nThe interface emphasizes whitespace, restrained typography, and quiet motion. Large-format imagery allows the ceramics to lead, avoiding conventional ecommerce clutter while preserving clarity and usability.\n\nCOLLABORATION & ITERATION\nDeveloped in close collaboration with the client through iterative design feedback. The visual direction evolved over multiple refinements to balance artistic expression with commercial clarity.\n\nOUTCOME\nDelivered a production-ready ecommerce foundation that blends editorial storytelling with scalable commerce infrastructure. The system supports future product growth and content expansion without structural changes.",
+    image: "/images/eveliina1.png",
+    tech: [
+      "Next.js (App Router)",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shopify Storefront API",
+      "Netlify",
+      "Formspree",
+    ],
+    role: [
+      "Concept & Direction",
+      "UX & UI Design",
+      "Frontend Architecture",
+      "Shopify Storefront Integration",
+      "Deployment & Infrastructure",
+    ],
+    url: "#",
   },
   {
     slug: "hireos",

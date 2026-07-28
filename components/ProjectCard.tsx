@@ -55,21 +55,14 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     </>
   );
 
-  const imageBlock =
-    project.url && project.url !== "#" ? (
-      <a
-        href={project.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group relative block aspect-[4/3] w-full overflow-hidden md:w-[55%]"
-      >
-        {imageContent}
-      </a>
-    ) : (
-      <div className="group relative aspect-[4/3] w-full overflow-hidden md:w-[55%]">
-        {imageContent}
-      </div>
-    );
+  const imageBlock = (
+    <Link
+      href={`/projects/${project.slug}`}
+      className="group relative block aspect-[4/3] w-full overflow-hidden md:w-[55%]"
+    >
+      {imageContent}
+    </Link>
+  );
 
   const textBlock = (
     <div className="flex w-full flex-col justify-center md:w-[40%]">
@@ -77,12 +70,23 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <p className="mt-4 font-sans text-[16px] font-normal leading-relaxed text-muted">
         {project.tagline}
       </p>
-      <Link
-        href={`/projects/${project.slug}`}
-        className="small-caps mt-6 inline-block text-foreground transition-opacity hover:opacity-60"
-      >
-        View
-      </Link>
+      {project.url && project.url !== "#" ? (
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="small-caps mt-6 inline-block text-foreground transition-opacity hover:opacity-60"
+        >
+          Visit
+        </a>
+      ) : (
+        <Link
+          href={`/projects/${project.slug}`}
+          className="small-caps mt-6 inline-block text-foreground transition-opacity hover:opacity-60"
+        >
+          View
+        </Link>
+      )}
     </div>
   );
 

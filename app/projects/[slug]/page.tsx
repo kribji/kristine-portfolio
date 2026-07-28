@@ -4,10 +4,22 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getProjectBySlug, projects } from "@/data/projects";
 import ProjectImage from "@/components/ProjectImage";
-import LeadOSOverview from "@/components/LeadOSOverview";
+import ProjectOverview from "@/components/ProjectOverview";
 
 type Props = {
   params: { slug: string };
+};
+
+const projectSectionImages: Record<string, Record<string, string>> = {
+  leados: {
+    CONTEXT: "/images/leados-agent.png",
+    "PRODUCT ARCHITECTURE": "/images/leados-pipeline.png",
+  },
+  eveliina: {
+    CONTEXT: "/images/eveliina1.png",
+    "DESIGN APPROACH": "/images/eveliina2.png",
+    OUTCOME: "/images/eveliina3.png",
+  },
 };
 
 export function generateStaticParams() {
@@ -26,6 +38,9 @@ export function generateMetadata({ params }: Props) {
 export default function ProjectPage({ params }: Props) {
   const project = getProjectBySlug(params.slug);
   if (!project) notFound();
+
+  const sectionImages = projectSectionImages[project.slug];
+  const hasStructuredOverview = Boolean(sectionImages);
 
   return (
     <>
@@ -51,8 +66,11 @@ export default function ProjectPage({ params }: Props) {
         <div className="mt-16 space-y-12">
           <section>
             <p className="small-caps text-muted">Overview</p>
-            {project.slug === "leados" ? (
-              <LeadOSOverview description={project.description} />
+            {hasStructuredOverview ? (
+              <ProjectOverview
+                description={project.description}
+                sectionImages={sectionImages}
+              />
             ) : (
               <p className="mt-4 font-sans text-[16px] leading-[1.8] text-foreground">
                 {project.description}
@@ -62,7 +80,22 @@ export default function ProjectPage({ params }: Props) {
 
           <section>
             <p className="small-caps text-muted">Role</p>
-            <p className="mt-4 font-sans text-[16px] text-foreground">{project.role}</p>
+            {Array.isArray(project.role) ? (
+              <ul className="mt-4 space-y-1">
+                {project.role.map((item) => (
+                  <li
+                    key={item}
+                    className="font-sans text-[16px] text-foreground"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="mt-4 font-sans text-[16px] text-foreground">
+                {project.role}
+              </p>
+            )}
           </section>
 
           <section>
