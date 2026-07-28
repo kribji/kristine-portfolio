@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getProjectBySlug, projects } from "@/data/projects";
 import ProjectImage from "@/components/ProjectImage";
+import LeadOSOverview from "@/components/LeadOSOverview";
 
 type Props = {
   params: { slug: string };
@@ -50,9 +51,13 @@ export default function ProjectPage({ params }: Props) {
         <div className="mt-16 space-y-12">
           <section>
             <p className="small-caps text-muted">Overview</p>
-            <p className="mt-4 font-sans text-[16px] leading-[1.8] text-foreground">
-              {project.description}
-            </p>
+            {project.slug === "leados" ? (
+              <LeadOSOverview description={project.description} />
+            ) : (
+              <p className="mt-4 font-sans text-[16px] leading-[1.8] text-foreground">
+                {project.description}
+              </p>
+            )}
           </section>
 
           <section>
