@@ -61,7 +61,7 @@ export const projects: Project[] = [
       "Shopify Storefront Integration",
       "Deployment & Infrastructure",
     ],
-    url: "#",
+    url: "https://eveveliinastudio.com",
   },
   {
     slug: "hireos",

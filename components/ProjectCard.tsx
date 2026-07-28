@@ -70,7 +70,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       <p className="mt-4 font-sans text-[16px] font-normal leading-relaxed text-muted">
         {project.tagline}
       </p>
-      {project.url && project.url !== "#" ? (
+      {project.url && project.url !== "#" && (
         <a
           href={project.url}
           target="_blank"
@@ -79,13 +79,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         >
           Visit
         </a>
-      ) : (
-        <Link
-          href={`/projects/${project.slug}`}
-          className="small-caps mt-6 inline-block text-foreground transition-opacity hover:opacity-60"
-        >
-          View
-        </Link>
       )}
     </div>
   );

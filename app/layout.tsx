@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "Kristine Bjørgan is a frontend developer, AI builder and concept designer working at the intersection of UX, systems thinking, and code.",
   metadataBase: new URL("https://kristinebjorgan.com"),
   icons: {
-    icon: "/favicon.ico",
+    icon: "/images/favicon.ico",
   },
 };
 
