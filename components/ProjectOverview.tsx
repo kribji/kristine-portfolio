@@ -7,26 +7,51 @@ type Section = {
   body: string;
 };
 
+function isAllCapsLabel(text: string): boolean {
+  const trimmed = text.trim();
+  if (!trimmed) return false;
+  return /^[A-Z0-9\s&\-·]+$/.test(trimmed) && /[A-Z]/.test(trimmed);
+}
+
 function parseSections(description: string): Section[] {
-  return description.split("\n\n").map((block) => {
+  const blocks = description
+    .split("\n\n")
+    .map((block) => block.trim())
+    .filter(Boolean);
+
+  const sections: Section[] = [];
+
+  for (let i = 0; i < blocks.length; i++) {
+    const block = blocks[i];
     const newlineIndex = block.indexOf("\n");
+
     if (newlineIndex === -1) {
-      return { label: null, body: block };
+      if (isAllCapsLabel(block)) {
+        const next = blocks[i + 1];
+        if (next && !isAllCapsLabel(next.split("\n")[0])) {
+          sections.push({ label: block, body: next });
+          i += 1;
+        } else {
+          sections.push({ label: block, body: "" });
+        }
+      } else {
+        sections.push({ label: null, body: block });
+      }
+      continue;
     }
 
     const firstLine = block.slice(0, newlineIndex);
-    const isLabel =
-      firstLine === firstLine.toUpperCase() && /^[A-Z\s&]+$/.test(firstLine);
-
-    if (isLabel) {
-      return {
+    if (isAllCapsLabel(firstLine)) {
+      sections.push({
         label: firstLine,
         body: block.slice(newlineIndex + 1),
-      };
+      });
+    } else {
+      sections.push({ label: null, body: block });
     }
+  }
 
-    return { label: null, body: block };
-  });
+  return sections;
 }
 
 function AnimatedSectionImage({ src, alt }: { src: string; alt: string }) {
@@ -86,9 +111,11 @@ export default function ProjectOverview({
               {section.label}
             </p>
           )}
-          <p className="font-sans text-[16px] leading-[1.8] text-foreground">
-            {section.body}
-          </p>
+          {section.body && (
+            <p className="font-sans text-[16px] leading-[1.8] text-foreground">
+              {section.body}
+            </p>
+          )}
           {section.label && sectionImages[section.label] && (
             <AnimatedSectionImage
               src={sectionImages[section.label]}

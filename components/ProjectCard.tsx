@@ -33,8 +33,11 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     return () => observer.disconnect();
   }, []);
 
-  const imageContent = (
-    <>
+  const imageBlock = (
+    <Link
+      href={`/projects/${project.slug}`}
+      className="group relative block aspect-[4/3] w-full overflow-hidden md:w-[55%]"
+    >
       {!imgError ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -48,38 +51,24 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           <span className="font-sans text-[15px] text-muted">{project.name}</span>
         </div>
       )}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/50 to-transparent" />
-      <h3 className="absolute bottom-4 left-4 font-display text-[36px] leading-none text-white md:bottom-6 md:left-6">
-        {project.name}
-      </h3>
-    </>
-  );
-
-  const imageBlock = (
-    <Link
-      href={`/projects/${project.slug}`}
-      className="group relative block aspect-[4/3] w-full overflow-hidden md:w-[55%]"
-    >
-      {imageContent}
     </Link>
   );
 
   const textBlock = (
     <div className="flex w-full flex-col justify-center md:w-[40%]">
       <p className="small-caps text-muted">{project.category}</p>
+      <h3 className="mt-3 font-display text-[36px] leading-none text-foreground">
+        {project.name}
+      </h3>
       <p className="mt-4 font-sans text-[16px] font-normal leading-relaxed text-muted">
         {project.tagline}
       </p>
-      {project.url && project.url !== "#" && (
-        <a
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="small-caps mt-6 inline-block text-foreground transition-opacity hover:opacity-60"
-        >
-          Visit
-        </a>
-      )}
+      <Link
+        href={`/projects/${project.slug}`}
+        className="small-caps mt-6 inline-block text-foreground transition-opacity hover:opacity-60"
+      >
+        Read more
+      </Link>
     </div>
   );
 

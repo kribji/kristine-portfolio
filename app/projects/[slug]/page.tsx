@@ -64,9 +64,11 @@ export default function ProjectPage({ params }: Props) {
 
         <p className="mt-4 font-sans text-[16px] text-muted">{project.tagline}</p>
 
-        <div className="mt-12">
-          <ProjectImage src={project.image} alt={project.name} name={project.name} />
-        </div>
+        {project.slug !== "holidaze" && (
+          <div className="mt-12">
+            <ProjectImage src={project.image} alt={project.name} name={project.name} />
+          </div>
+        )}
 
         <div className="mt-16 space-y-12">
           <section>
