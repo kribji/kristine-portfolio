@@ -41,18 +41,9 @@ export default function About() {
     <section
       ref={ref}
       id="about"
-      className={`border-b border-border py-24 ${visible ? "animate-visible" : "animate-hidden"}`}
+      className={`border-b border-border px-6 py-24 md:px-10 ${visible ? "animate-visible" : "animate-hidden"}`}
     >
-      <div
-        className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-24 mx-auto"
-        style={{
-          maxWidth: "900px",
-          margin: "0 auto",
-          width: "100%",
-          paddingLeft: "24px",
-          paddingRight: "24px",
-        }}
-      >
+      <div className="grid w-full grid-cols-1 gap-16 md:grid-cols-2 md:gap-24">
         <div>
           <p className="small-caps text-muted">About</p>
           <div className="mt-6 space-y-5 font-sans text-[16px] font-normal leading-[1.8] text-foreground">
