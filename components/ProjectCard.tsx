@@ -51,6 +51,13 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           <span className="font-sans text-[15px] text-muted">{project.name}</span>
         </div>
       )}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 40%)",
+        }}
+      />
     </Link>
   );
 
