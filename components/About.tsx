@@ -1,6 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { caseStudies } from "@/data/casestudies";
 
 const stack = [
   "Next.js",
@@ -89,6 +91,32 @@ export default function About() {
               </li>
             ))}
           </ul>
+        </div>
+      </div>
+
+      <div className="mt-24 border-t border-border pt-16">
+        <p className="small-caps text-muted">Selected Case Studies</p>
+        <div className="mt-8 space-y-0">
+          {caseStudies.map((study) => {
+            const year = study.category.split("·")[1]?.trim() ?? "";
+            return (
+              <Link
+                key={study.slug}
+                href={`/case-studies/${study.slug}`}
+                className="group flex flex-col gap-2 border-b border-border py-6 transition-opacity hover:opacity-60 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
+              >
+                <div className="min-w-0">
+                  <p className="font-sans text-[16px] font-normal text-foreground">
+                    {study.title}
+                  </p>
+                  <p className="mt-1 font-sans text-[15px] text-muted">
+                    {study.tagline}
+                  </p>
+                </div>
+                <p className="small-caps shrink-0 text-muted">{year}</p>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
