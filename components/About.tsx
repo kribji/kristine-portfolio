@@ -41,7 +41,7 @@ export default function About() {
     <section
       ref={ref}
       id="about"
-      className={`border-b border-border px-6 py-24 md:px-10 ${visible ? "animate-visible" : "animate-hidden"}`}
+      className={`border-b border-border px-6 py-24 md:px-24 ${visible ? "animate-visible" : "animate-hidden"}`}
     >
       <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_300px]">
         <div>
@@ -55,13 +55,13 @@ export default function About() {
             </p>
             <p>
               I design and build custom, minimal web experiences from concept to
-              deployment — with a focus on clarity, usability, and long-term
+              deployment, with a focus on clarity, usability, and long-term
               maintainability. My work ranges from focused websites and webshops
               to larger AI-powered SaaS products I&apos;ve built entirely solo.
             </p>
             <p>
               I work primarily with Next.js, React, Supabase, Tailwind, and AI
-              APIs — often combined with headless CMS solutions and third-party
+              APIs, often combined with headless CMS solutions and third-party
               integrations.
             </p>
             <p>
