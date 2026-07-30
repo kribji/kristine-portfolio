@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "Kristine Bjørgan is a frontend developer, AI builder and concept designer working at the intersection of UX, systems thinking, and code.",
   metadataBase: new URL("https://kristinebjorgan.com"),
   icons: {
-    icon: "/favicon.ico",
+    icon: [{ url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" }],
   },
 };
 
@@ -31,6 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+      </head>
       <body className="bg-background font-sans text-foreground antialiased">
         {children}
       </body>
