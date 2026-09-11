@@ -42,7 +42,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           className="p-6 md:p-10"
           style={{
             backgroundColor: "rgba(255,255,255,0.9)",
-            boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04)",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
           }}
         >
           <Link
