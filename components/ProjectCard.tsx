@@ -38,10 +38,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       className={`py-12 md:py-16 ${visible ? "animate-visible" : "animate-hidden"}`}
     >
       <div className="mx-auto w-full max-w-[900px] px-6 md:px-10">
-        <div className="rounded-2xl bg-[#F7F7F7] p-6 md:p-10">
+        <div className="border border-border bg-[#FAFAFA] p-6 md:p-10">
           <Link
             href={`/projects/${project.slug}`}
-            className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg"
+            className="group relative block aspect-[4/3] w-full overflow-hidden"
           >
             {!imgError ? (
               // eslint-disable-next-line @next/next/no-img-element
@@ -72,8 +72,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <p className="small-caps text-muted">{project.year}</p>
           </div>
 
-          <div className="mt-6 flex w-full flex-col items-end">
-            <div className="w-full max-w-[380px] text-right">
+          <div className="mt-6 flex w-full flex-col items-start">
+            <div className="w-full max-w-[380px] text-left">
               <h3 className="font-sans text-[28px] font-semibold leading-tight text-foreground md:text-[32px]">
                 {project.name}
               </h3>
