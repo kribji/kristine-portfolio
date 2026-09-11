@@ -36,7 +36,7 @@ export default function Navbar() {
         scrolled ? "bg-white" : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex w-full items-center justify-end px-6 py-5 md:px-10">
+      <nav className="relative mx-auto flex w-full max-w-[900px] items-center justify-center px-6 py-5 md:px-10">
         <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
@@ -50,7 +50,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center md:hidden">
+        <div className="absolute right-6 flex items-center md:hidden md:right-10">
           <button
             type="button"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -79,7 +79,7 @@ export default function Navbar() {
 
       {menuOpen && (
         <div className="border-t border-border bg-white md:hidden">
-          <ul className="flex flex-col px-6 py-6">
+          <ul className="flex flex-col items-center px-6 py-6">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a

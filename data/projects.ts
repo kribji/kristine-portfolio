@@ -2,6 +2,7 @@ export type Project = {
   slug: string;
   name: string;
   category: string;
+  year: number;
   tagline: string;
   description: string;
   image: string;
@@ -15,6 +16,7 @@ export const projects: Project[] = [
     slug: "leados",
     name: "LeadOS",
     category: "AI SAAS · PRODUCT",
+    year: 2026,
     tagline:
       "An AI-powered B2B lead generation platform built solo from concept to production.",
     description:
@@ -41,7 +43,8 @@ export const projects: Project[] = [
   {
     slug: "eveliina",
     name: "Eveliina",
-    category: "PROJECT · 2026",
+    category: "E-COMMERCE · WEBSHOP",
+    year: 2026,
     tagline: "Headless ceramics ecommerce & digital presence",
     description:
       "CONTEXT\nThe project began without an existing website. The goal was to create a calm, refined digital space that reflects the artist's aesthetic while enabling direct product sales without relying on Shopify's default storefront themes.\n\nTECHNICAL ARCHITECTURE\nBuilt using Next.js App Router with dynamic routing for collections and product detail pages. Shopify is used as the inventory and commerce backend via the Storefront API, while the frontend remains fully custom and decoupled.\n\nDATA & UI SEPARATION\nImplemented a clear separation between API routes and UI components. Custom API endpoints handle communication with Shopify, while page components focus purely on presentation. This structure improves scalability, maintainability, and future CMS integration.\n\nTECHNICAL HIGHLIGHTS\nDynamic API routes for collections and products. Headless Shopify Storefront API integration. Clean URL structure: /shop/[collection]/[product]. Normalized product data layer for UI consistency. Production deployment via Netlify with environment-based configuration. Scalable structure prepared for CMS-driven content.\n\nDESIGN APPROACH\nThe interface emphasizes whitespace, restrained typography, and quiet motion. Large-format imagery allows the ceramics to lead, avoiding conventional ecommerce clutter while preserving clarity and usability.\n\nCOLLABORATION & ITERATION\nDeveloped in close collaboration with the client through iterative design feedback. The visual direction evolved over multiple refinements to balance artistic expression with commercial clarity.\n\nOUTCOME\nDelivered a production-ready ecommerce foundation that blends editorial storytelling with scalable commerce infrastructure. The system supports future product growth and content expansion without structural changes.",
@@ -66,7 +69,8 @@ export const projects: Project[] = [
   {
     slug: "holidaze",
     name: "Holidaze",
-    category: "PROJECT · 2024",
+    category: "PROJECT",
+    year: 2024,
     tagline:
       "A conceptual travel platform exploring how digital services can evolve alongside digitally mature users.",
     description:
