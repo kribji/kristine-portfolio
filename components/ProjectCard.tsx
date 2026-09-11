@@ -38,7 +38,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       className={`py-6 md:py-8 ${visible ? "animate-visible" : "animate-hidden"}`}
     >
       <div className="mx-auto w-full max-w-[900px] px-6 md:px-10">
-        <div className="border border-border bg-[#FAFAFA] p-6 md:p-10">
+        <div
+          className="p-6 md:p-10"
+          style={{
+            backgroundColor: "rgba(255,255,255,0.9)",
+            boxShadow: "0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04)",
+          }}
+        >
           <Link
             href={`/projects/${project.slug}`}
             className="group relative block aspect-[4/3] w-full overflow-hidden"
