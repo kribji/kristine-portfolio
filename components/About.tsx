@@ -11,19 +11,27 @@ const stackGroups = [
   },
   {
     label: "Backend & Data",
-    items: ["Supabase", "PostgreSQL", "Vercel", "Netlify"],
+    items: ["Supabase", "PostgreSQL", "Vercel", "Netlify", "AWS"],
   },
   {
     label: "AI",
-    items: ["Anthropic API"],
+    items: ["Anthropic API", "Ollama"],
   },
   {
     label: "Integrations",
-    items: ["Shopify Storefront API", "LemonSqueezy", "Resend", "Formspree"],
+    items: [
+      "Shopify Storefront API",
+      "LemonSqueezy",
+      "Resend",
+      "Formspree",
+      "Hunter",
+      "Serper",
+      "FullEnrich",
+    ],
   },
   {
     label: "Design & Tools",
-    items: ["Figma", "Git", "WordPress"],
+    items: ["Figma", "Git", "WordPress", "Cursor", "Claude Code"],
   },
 ];
 
