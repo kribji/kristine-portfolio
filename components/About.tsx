@@ -17,6 +17,11 @@ const stack = [
   "WordPress",
 ];
 
+const cardStyle = {
+  backgroundColor: "rgba(255,255,255,0.9)",
+  boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
+};
+
 export default function About() {
   const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
@@ -43,19 +48,13 @@ export default function About() {
     <section
       ref={ref}
       id="about"
-      className={`border-b border-border px-6 py-24 md:px-24 ${visible ? "animate-visible" : "animate-hidden"}`}
+      className={`bg-[#f3f4f5] px-6 py-24 md:px-24 ${visible ? "animate-visible" : "animate-hidden"}`}
     >
-      <div
-        className="p-6 md:p-10"
-        style={{
-          backgroundColor: "#3a3a3a",
-          boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
-        }}
-      >
+      <div className="p-6 md:p-10" style={cardStyle}>
         <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_300px]">
           <div>
-            <p className="small-caps text-white/60">About</p>
-            <div className="mt-6 space-y-5 font-sans text-[16px] font-normal leading-[1.8] text-white">
+            <p className="small-caps text-muted">About</p>
+            <div className="mt-6 space-y-5 font-sans text-[16px] font-normal leading-[1.8] text-foreground">
               <p>
                 At heart, I&apos;m a frontend developer and product builder working
                 at the intersection of UX, systems thinking, and code. I have
@@ -87,12 +86,12 @@ export default function About() {
           </div>
 
           <div>
-            <p className="small-caps text-white/60">Tools & Stack</p>
+            <p className="small-caps text-muted">Tools & Stack</p>
             <ul className="mt-6 flex flex-wrap gap-2">
               {stack.map((item) => (
                 <li
                   key={item}
-                  className="rounded-full border border-white bg-transparent px-3 py-1.5 font-sans text-[13px] font-normal text-white"
+                  className="border border-foreground bg-transparent px-3 py-1.5 font-sans text-[13px] font-normal text-foreground"
                 >
                   {item}
                 </li>
@@ -100,31 +99,31 @@ export default function About() {
             </ul>
           </div>
         </div>
+      </div>
 
-        <div className="mt-24 border-t border-white/20 pt-16">
-          <p className="small-caps text-white/60">Selected Case Studies</p>
-          <div className="mt-8 space-y-0">
-            {caseStudies.map((study) => {
-              const year = study.category.split("·")[1]?.trim() ?? "";
-              return (
-                <Link
-                  key={study.slug}
-                  href={`/case-studies/${study.slug}`}
-                  className="group flex flex-col gap-2 border-b border-white/20 py-6 transition-opacity hover:opacity-60 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
-                >
-                  <div className="min-w-0">
-                    <p className="font-sans text-[16px] font-normal text-white">
-                      {study.title}
-                    </p>
-                    <p className="mt-1 font-sans text-[15px] text-white/60">
-                      {study.tagline}
-                    </p>
-                  </div>
-                  <p className="small-caps shrink-0 text-white/60">{year}</p>
-                </Link>
-              );
-            })}
-          </div>
+      <div className="mt-10 p-6 md:mt-12 md:p-10" style={cardStyle}>
+        <p className="small-caps text-muted">Selected Case Studies</p>
+        <div className="mt-8 space-y-8">
+          {caseStudies.map((study) => {
+            const year = study.category.split("·")[1]?.trim() ?? "";
+            return (
+              <Link
+                key={study.slug}
+                href={`/case-studies/${study.slug}`}
+                className="group flex flex-col gap-2 transition-opacity hover:opacity-60 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
+              >
+                <div className="min-w-0">
+                  <p className="font-sans text-[16px] font-normal text-foreground">
+                    {study.title}
+                  </p>
+                  <p className="mt-1 font-sans text-[15px] text-muted">
+                    {study.tagline}
+                  </p>
+                </div>
+                <p className="small-caps shrink-0 text-muted">{year}</p>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
