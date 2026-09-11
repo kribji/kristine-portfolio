@@ -35,7 +35,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article
       ref={ref}
-      className={`py-12 md:py-16 ${visible ? "animate-visible" : "animate-hidden"}`}
+      className={`py-6 md:py-8 ${visible ? "animate-visible" : "animate-hidden"}`}
     >
       <div className="mx-auto w-full max-w-[900px] px-6 md:px-10">
         <div className="border border-border bg-[#FAFAFA] p-6 md:p-10">
@@ -72,23 +72,22 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <p className="small-caps text-muted">{project.year}</p>
           </div>
 
-          <div className="mt-6 flex w-full flex-col items-start">
-            <div className="w-full max-w-[380px] text-left">
-              <h3 className="font-sans text-[28px] font-semibold leading-tight text-foreground md:text-[32px]">
-                {project.name}
-              </h3>
-              <p className="mt-2 font-sans text-[16px] font-normal leading-relaxed text-muted">
-                {project.tagline}
-              </p>
-              <div className="mt-5 flex justify-center">
-                <Link
-                  href={`/projects/${project.slug}`}
-                  className="small-caps text-foreground transition-opacity hover:opacity-60"
-                >
-                  Read more
-                </Link>
-              </div>
-            </div>
+          <div className="mt-6 w-full max-w-[380px] text-left">
+            <h3 className="font-sans text-[32px] font-medium leading-tight tracking-[0.02em] text-foreground md:text-[36px]">
+              {project.name}
+            </h3>
+            <p className="mt-2 font-sans text-[16px] font-normal leading-relaxed text-muted">
+              {project.tagline}
+            </p>
+          </div>
+
+          <div className="mt-5 flex w-full justify-center">
+            <Link
+              href={`/projects/${project.slug}`}
+              className="small-caps text-foreground transition-opacity hover:opacity-60"
+            >
+              Read more
+            </Link>
           </div>
         </div>
       </div>
