@@ -9,8 +9,7 @@ type ProjectCardProps = {
   index: number;
 };
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
-  const isOdd = index % 2 === 0;
+export default function ProjectCard({ project }: ProjectCardProps) {
   const ref = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
   const [imgError, setImgError] = useState(false);
@@ -33,64 +32,55 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     return () => observer.disconnect();
   }, []);
 
-  const imageBlock = (
-    <Link
-      href={`/projects/${project.slug}`}
-      className="group relative block aspect-[4/3] w-full overflow-hidden md:w-[55%]"
-    >
-      {!imgError ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={project.image}
-          alt={project.name}
-          className="h-full w-full object-cover transition-transform duration-[400ms] ease-in-out group-hover:scale-105"
-          onError={() => setImgError(true)}
-        />
-      ) : (
-        <div className="flex h-full w-full items-center justify-center bg-[#F0F0F0]">
-          <span className="font-sans text-[15px] text-muted">{project.name}</span>
-        </div>
-      )}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 40%)",
-        }}
-      />
-    </Link>
-  );
-
-  const textBlock = (
-    <div className="flex w-full flex-col justify-center md:w-[40%]">
-      <p className="small-caps text-muted">{project.category}</p>
-      <h3 className="mt-3 font-display text-[36px] leading-none text-foreground">
-        {project.name}
-      </h3>
-      <p className="mt-4 font-sans text-[16px] font-normal leading-relaxed text-muted">
-        {project.tagline}
-      </p>
-      <Link
-        href={`/projects/${project.slug}`}
-        className="small-caps mt-6 inline-block text-foreground transition-opacity hover:opacity-60"
-      >
-        Read more
-      </Link>
-    </div>
-  );
-
   return (
     <article
       ref={ref}
       className={`border-b border-border py-24 ${visible ? "animate-visible" : "animate-hidden"}`}
     >
-      <div
-        className={`mx-auto flex w-full flex-col gap-10 px-6 md:flex-row md:items-center md:justify-between md:gap-[5%] md:px-10 ${
-          isOdd ? "" : "md:flex-row-reverse"
-        }`}
-      >
-        {imageBlock}
-        {textBlock}
+      <div className="mx-auto flex w-full max-w-[900px] flex-col items-center gap-10 px-6 text-center md:px-10">
+        <Link
+          href={`/projects/${project.slug}`}
+          className="group relative block aspect-[4/3] w-full overflow-hidden"
+        >
+          {!imgError ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={project.image}
+              alt={project.name}
+              className="h-full w-full object-cover transition-transform duration-[400ms] ease-in-out group-hover:scale-105"
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-[#F0F0F0]">
+              <span className="font-sans text-[15px] text-muted">
+                {project.name}
+              </span>
+            </div>
+          )}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 40%)",
+            }}
+          />
+        </Link>
+
+        <div className="flex w-full max-w-[560px] flex-col items-center">
+          <p className="small-caps text-muted">{project.category}</p>
+          <h3 className="mt-3 font-display text-[36px] leading-none text-foreground">
+            {project.name}
+          </h3>
+          <p className="mt-4 font-sans text-[16px] font-normal leading-relaxed text-muted">
+            {project.tagline}
+          </p>
+          <Link
+            href={`/projects/${project.slug}`}
+            className="small-caps mt-6 inline-block text-foreground transition-opacity hover:opacity-60"
+          >
+            Read more
+          </Link>
+        </div>
       </div>
     </article>
   );
