@@ -22,7 +22,8 @@ body {
 @layer utilities {
   .small-caps {
     font-size: 11px;
-    letter-spacing: 0.12em;
+    font-weight: 400;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
   }
 }

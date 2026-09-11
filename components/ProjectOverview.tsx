@@ -107,7 +107,7 @@ export default function ProjectOverview({
       {sections.map((section, index) => (
         <div key={`${section.label ?? "section"}-${index}`}>
           {section.label && (
-            <p className="mb-2 font-sans text-[12px] uppercase tracking-[0.1em] text-muted">
+            <p className="small-caps mb-2 text-muted">
               {section.label}
             </p>
           )}

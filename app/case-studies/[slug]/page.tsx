@@ -92,7 +92,7 @@ export default function CaseStudyPage({ params }: Props) {
         <div className="mt-16 space-y-10">
           {study.sections.map((section) => (
             <FadeIn key={section.label}>
-              <p className="mb-2 font-sans text-[12px] uppercase tracking-[0.1em] text-muted">
+              <p className="small-caps mb-2 text-muted">
                 {section.label}
               </p>
               <p className="font-sans text-[16px] leading-[1.8] text-foreground">
