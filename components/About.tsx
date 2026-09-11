@@ -4,17 +4,27 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { caseStudies } from "@/data/casestudies";
 
-const stack = [
-  "Next.js",
-  "React",
-  "TypeScript",
-  "Supabase",
-  "Tailwind CSS",
-  "Claude API",
-  "Figma",
-  "Git",
-  "Vercel",
-  "WordPress",
+const stackGroups = [
+  {
+    label: "Frontend",
+    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Three.js"],
+  },
+  {
+    label: "Backend & Data",
+    items: ["Supabase", "PostgreSQL", "Vercel", "Netlify"],
+  },
+  {
+    label: "AI",
+    items: ["Anthropic API"],
+  },
+  {
+    label: "Integrations",
+    items: ["Shopify Storefront API", "LemonSqueezy", "Resend", "Formspree"],
+  },
+  {
+    label: "Design & Tools",
+    items: ["Figma", "Git", "WordPress"],
+  },
 ];
 
 const cardStyle = {
@@ -51,7 +61,7 @@ export default function About() {
       className={`bg-[#f3f4f5] px-6 py-24 md:px-24 ${visible ? "animate-visible" : "animate-hidden"}`}
     >
       <div className="p-6 md:p-10" style={cardStyle}>
-        <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_300px]">
+        <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_390px]">
           <div>
             <p className="small-caps text-muted">About</p>
             <div className="mt-6 space-y-5 font-sans text-[16px] font-normal leading-[1.8] text-foreground">
@@ -87,16 +97,25 @@ export default function About() {
 
           <div>
             <p className="small-caps text-muted">Tools & Stack</p>
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {stack.map((item) => (
-                <li
-                  key={item}
-                  className="border border-foreground bg-transparent px-3 py-1.5 font-sans text-[13px] font-normal text-foreground"
-                >
-                  {item}
-                </li>
+            <div className="mt-6 space-y-5">
+              {stackGroups.map((group) => (
+                <div key={group.label}>
+                  <p className="mb-2 text-[10px] font-normal uppercase tracking-[0.18em] text-muted/80">
+                    {group.label}
+                  </p>
+                  <ul className="flex flex-wrap gap-2">
+                    {group.items.map((item) => (
+                      <li
+                        key={item}
+                        className="border border-foreground bg-transparent px-3 py-1.5 font-sans text-[13px] font-normal text-foreground"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>
