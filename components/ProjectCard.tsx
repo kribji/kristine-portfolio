@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import type { Project } from "@/data/projects";
 
 type ProjectCardProps = {
@@ -14,14 +14,19 @@ const cardStyle = {
   boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
 };
 
+const MAX_TILT = 5.5;
+
 export default function ProjectCard({
   project,
   variant = "featured",
 }: ProjectCardProps) {
   const ref = useRef<HTMLElement>(null);
+  const tiltRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const [imgError, setImgError] = useState(false);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const compact = variant === "compact";
+  const isLeados = project.slug === "leados";
 
   useEffect(() => {
     const el = ref.current;
@@ -41,9 +46,33 @@ export default function ProjectCard({
     return () => observer.disconnect();
   }, []);
 
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+    const el = tiltRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    setTilt({
+      x: (0.5 - py) * MAX_TILT * 2,
+      y: (px - 0.5) * MAX_TILT * 2,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ x: 0, y: 0 });
+  };
+
   const image = (
     <div
       className={`group relative w-full overflow-hidden ${
+        isLeados ? "bg-black" : ""
+      } ${
         compact
           ? "aspect-[4/3]"
           : "aspect-[4/3] md:min-h-0 md:flex-1 md:aspect-auto"
@@ -54,7 +83,9 @@ export default function ProjectCard({
         <img
           src={project.image}
           alt={project.name}
-          className="h-full w-full object-cover transition-transform duration-[400ms] ease-in-out group-hover:scale-105"
+          className={`h-full w-full transition-transform duration-[400ms] ease-in-out group-hover:scale-105 ${
+            isLeados ? "object-contain" : "object-cover"
+          }`}
           onError={() => setImgError(true)}
         />
       ) : (
@@ -62,13 +93,15 @@ export default function ProjectCard({
           <span className="font-sans text-[15px] text-muted">{project.name}</span>
         </div>
       )}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 40%)",
-        }}
-      />
+      {!isLeados && (
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.15) 0%, transparent 40%)",
+          }}
+        />
+      )}
     </div>
   );
 
@@ -135,10 +168,21 @@ export default function ProjectCard({
   return (
     <article
       ref={ref}
-      className={`h-full ${visible ? "animate-visible" : "animate-hidden"}`}
+      className={`h-full [perspective:800px] ${visible ? "animate-visible" : "animate-hidden"}`}
     >
-      {fullBody}
-      {compactDesktop}
+      <div
+        ref={tiltRef}
+        className="h-full will-change-transform transition-transform duration-200 ease-out"
+        style={{
+          transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+          transformStyle: "preserve-3d",
+        }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        {fullBody}
+        {compactDesktop}
+      </div>
     </article>
   );
 }
