@@ -36,7 +36,7 @@ const stackGroups = [
 ];
 
 const cardStyle = {
-  backgroundColor: "rgba(255,255,255,0.9)",
+  backgroundColor: "#f3f4f5",
   boxShadow: "0 8px 24px rgba(0,0,0,0.1)",
 };
 
@@ -66,7 +66,7 @@ export default function About() {
     <section
       ref={ref}
       id="about"
-      className={`bg-[#f3f4f5] px-6 py-24 md:px-24 ${visible ? "animate-visible" : "animate-hidden"}`}
+      className={`bg-white px-6 py-24 md:px-24 ${visible ? "animate-visible" : "animate-hidden"}`}
     >
       <div className="p-6 md:p-10" style={cardStyle}>
         <div className="grid grid-cols-1 gap-16 md:grid-cols-[1fr_390px]">
@@ -116,7 +116,7 @@ export default function About() {
                     {group.items.map((item) => (
                       <li
                         key={item}
-                        className="border border-foreground bg-transparent px-3 py-1.5 font-sans text-[13px] font-normal text-foreground"
+                        className="border border-foreground bg-white px-3 py-1.5 font-sans text-[13px] font-normal text-foreground"
                       >
                         {item}
                       </li>

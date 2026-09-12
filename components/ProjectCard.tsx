@@ -83,7 +83,7 @@ export default function ProjectCard({
         <img
           src={project.image}
           alt={project.name}
-          className={`h-full w-full transition-transform duration-[400ms] ease-in-out group-hover:scale-105 ${
+          className={`h-full w-full ${
             isLeados ? "object-contain" : "object-cover"
           }`}
           onError={() => setImgError(true)}
