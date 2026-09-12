@@ -10,7 +10,7 @@ export default function Hero() {
         </h1>
         <p className="mt-6 max-w-[480px] self-end text-right font-sans text-[16px] font-normal leading-relaxed text-muted">
           a frontend developer, AI builder and concept designer working at the
-          intersection of UX, systems thinking, and code.
+          intersection of UX, systems thinking and code.
         </p>
       </div>
     </section>

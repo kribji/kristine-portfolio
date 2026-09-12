@@ -74,21 +74,22 @@ export default function About() {
             <p className="small-caps text-muted">About</p>
             <div className="mt-6 space-y-5 font-sans text-[16px] font-normal leading-[1.8] text-foreground">
               <p>
-                At heart, I&apos;m a frontend developer and product builder working
-                at the intersection of UX, systems thinking, and code. I have
-                formal training in frontend development, web technologies, and
-                project management.
+                At heart, I&apos;m a frontend developer and product builder
+                thriving at the intersection of UX, systems thinking,
+                architecture and code. In addition to my formal training in
+                frontend development, I hold a degree in project management.
               </p>
               <p>
-                I design and build custom, minimal web experiences from concept to
-                deployment, with a focus on clarity, usability, and long-term
-                maintainability. My work ranges from focused websites and webshops
-                to larger AI-powered SaaS products I&apos;ve built entirely solo.
+                I design and build custom, minimal web experiences from concept
+                to deployment, with a focus on clarity, usability, and long-term
+                maintainability. My work ranges from focused websites and
+                webshops to larger AI-powered SaaS products I&apos;ve built
+                entirely solo.
               </p>
               <p>
-                I work primarily with Next.js, React, Supabase, Tailwind, and AI
-                APIs, often combined with headless CMS solutions and third-party
-                integrations.
+                I work primarily with Next.js, React, Supabase, and Tailwind,
+                building AI-native products powered by the Anthropic API and
+                integrated data and enrichment tooling.
               </p>
               <p>
                 I collaborate with a limited number of clients through a clear,
@@ -97,8 +98,8 @@ export default function About() {
               </p>
               <p>
                 I believe the next web should empower rather than persuade. I
-                build calm, signal-over-noise digital experiences that respect the
-                user.
+                build calm, signal-over-noise digital experiences that respect
+                the user.
               </p>
             </div>
           </div>
@@ -129,7 +130,7 @@ export default function About() {
       </div>
 
       <div className="mt-10 p-6 md:mt-12 md:p-10" style={cardStyle}>
-        <p className="small-caps text-muted">Selected Case Studies</p>
+        <p className="small-caps text-muted">Case Studies</p>
         <div className="mt-8 space-y-8">
           {caseStudies.map((study) => {
             const year = study.category.split("·")[1]?.trim() ?? "";
